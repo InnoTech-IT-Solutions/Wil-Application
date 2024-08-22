@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Switch Preference -->
+    <SwitchPreferenceCompat
+        android:key="notifications"
+        android:title="Enable Notifications"
+        android:summary="Receive notifications from the app"
+        android:defaultValue="true" />
+
+    <!-- EditText Preference -->
+    <EditTextPreference
+        android:key="username"
+        android:title="Username"
+        android:summary="Enter your username"
+        android:defaultValue=""
+        android:inputType="text" />
+
+    <!-- List Preference -->
+    <ListPreference
+        android:key="theme"
+        android:title="Select Theme"
+        android:summary="Choose a theme for the app"
+        android:defaultValue="Light"
+        android:entries="@array/theme_options"
+        android:entryValues="@array/theme_values" />
+
+</PreferenceScreen>

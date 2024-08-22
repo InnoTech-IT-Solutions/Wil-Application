@@ -69,7 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Sign Up"
-            android:background="@color/black"
+            android:background="@drawable/rounded_button"
             android:textColor="@android:color/white"
             android:padding="12dp"
             android:layout_marginBottom="24dp" />
@@ -78,11 +78,11 @@
         <TextView
             android:id="@+id/loginTextButton"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Already have an account? Log In"
-            android:textColor="@color/black"
+            android:layout_height="22dp"
             android:clickable="true"
-            android:focusable="true" />
+            android:focusable="true"
+            android:text="Already have an account? Log In"
+            android:textColor="@color/black" />
 
     </LinearLayout>
 </ScrollView>
