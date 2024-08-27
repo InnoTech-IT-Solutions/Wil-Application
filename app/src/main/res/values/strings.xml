@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name">Heal_Application</string>
     <string-array name="theme_options">
         <item>Light</item>
         <item>Dark</item>
