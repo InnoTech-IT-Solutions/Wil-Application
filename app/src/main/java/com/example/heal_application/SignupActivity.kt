@@ -7,9 +7,14 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.UserProfileChangeRequest
+
 
 class SignupActivity : AppCompatActivity() {
 
+    private lateinit var auth: FirebaseAuth
     private lateinit var nameEditText: EditText
     private lateinit var emailEditText: EditText
     private lateinit var passwordEditText: EditText
@@ -21,6 +26,7 @@ class SignupActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
 
+        auth = FirebaseAuth.getInstance() //Initializing Firebase Auth
         nameEditText = findViewById(R.id.nameEditText)
         emailEditText = findViewById(R.id.emailEditText)
         passwordEditText = findViewById(R.id.passwordEditText)
@@ -39,7 +45,7 @@ class SignupActivity : AppCompatActivity() {
             } else if (password != confirmPassword) {
                 Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
             } else {
-                // Perform signup logic here
+                createUser(email,password,name)
             }
         }
 
@@ -49,4 +55,46 @@ class SignupActivity : AppCompatActivity() {
             finish()
         }
     }
-}
+
+    private fun createUser(email: String, password: String, name: String) {
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    //Sign in successful...UI Updated
+                    val user = auth.currentUser
+                    updateUI(user, name)
+                } else {
+                    // If sign in fails, display message
+                    Toast.makeText(
+                        baseContext, "User Authentication Failed",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    updateUI(null, name)
+                }
+            }
+    }
+
+    private fun updateUI(user: FirebaseUser?, name: String) {
+        if (user != null) {
+            // Save the user's name to the Firebase user profile
+            val profileUpdates = UserProfileChangeRequest.Builder()
+                .setDisplayName(name)
+                .build()
+
+            // Update the user's profile with the new display name
+            user.updateProfile(profileUpdates)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        // Redirect to home or login screen
+                        startActivity(Intent(this, LoginActivity::class.java))
+                        finish()
+                    } else {
+                        // Handle the failure case if needed
+                        Toast.makeText(this, "Failed to update profile", Toast.LENGTH_SHORT).show()
+                    }
+                }
+        }
+    }
+
+        }
+

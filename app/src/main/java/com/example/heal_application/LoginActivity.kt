@@ -1,12 +1,16 @@
 package com.example.heal_application
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.style.ForegroundColorSpan
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 
 class LoginActivity : AppCompatActivity() {
 
@@ -26,6 +30,19 @@ class LoginActivity : AppCompatActivity() {
         forgotPasswordButton = findViewById(R.id.forgotPasswordButton)
         signupButton = findViewById(R.id.signupButton)
 
+        //Highlighting "Sign up!"
+        val fulltext = "Don't have an account? Sign Up!"
+        val spannableString= SpannableString(fulltext)
+
+        //Setting color for "Sign Up!"
+        val signupColorSpan = ForegroundColorSpan(Color.BLUE)
+        val startIndex = fulltext.indexOf("Sign Up!")
+        val endIndex = startIndex + "Sign Up!".length
+        spannableString.setSpan(signupColorSpan, startIndex, endIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+        // Setting spannable to signupButton TV
+        signupButton.text = spannableString
+
         loginButton.setOnClickListener {
             val email = emailEditText.text.toString().trim()
             val password = passwordEditText.text.toString().trim()
@@ -43,6 +60,9 @@ class LoginActivity : AppCompatActivity() {
 
         signupButton.setOnClickListener {
             // Navigate to Signup screen
+            val intent =Intent(this, SignupActivity::class.java)
+            startActivity(intent)
+
         }
     }
 }

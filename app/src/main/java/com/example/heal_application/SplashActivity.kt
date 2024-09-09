@@ -16,9 +16,10 @@ class SplashActivity : AppCompatActivity() {
 
         Handler(Looper.getMainLooper()).postDelayed({
             // Start the next activity
-            startActivity(Intent(this, MainActivity::class.java))
-            // Close this activity
-            finish()
+            val intent = Intent(this@SplashActivity, HomeActivity::class.java)
+            startActivity(intent)
+            finish() // Finish SplashActivity so it's not in the back stack
+
         }, splashTimeOut)
     }
 }

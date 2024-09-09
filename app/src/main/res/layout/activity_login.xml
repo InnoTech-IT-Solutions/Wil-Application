@@ -63,7 +63,7 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="true"
-        android:text="Don't have an account? Sign Up"
+        android:text="Don't have an account? Sign Up!"
         android:textColor="@color/black" />
 
 </LinearLayout>
