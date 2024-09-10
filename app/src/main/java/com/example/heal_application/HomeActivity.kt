@@ -94,10 +94,15 @@ class HomeActivity : AppCompatActivity() {
 
         eventsButton.setOnClickListener {
             // Handle events navigation
+            val intent = Intent(this, EventsActivity::class.java)
+            startActivity(intent)
+            finish()  // Close HomeActivity
         }
 
         settingsButton.setOnClickListener {
-            // Handle settings navigation
+            val intent = Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
+            finish()  // Close HomeActivity
         }
 
         calendarButton.setOnClickListener {

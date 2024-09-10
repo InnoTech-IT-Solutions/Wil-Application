@@ -73,7 +73,7 @@
                 android:layout_margin="8dp"
                 android:background="@android:color/transparent"
                 android:contentDescription="Event 1"
-                android:src="@drawable/background" />
+                android:src="@drawable/eventplaceholder" />
 
             <ImageButton
                 android:id="@+id/imageButton2"
@@ -83,7 +83,7 @@
 
                 android:background="@android:color/transparent"
                 android:contentDescription="Event 2"
-                android:src="@drawable/heallogo" />
+                android:src="@drawable/eventplaceholder" />
 
             <ImageButton
                 android:id="@+id/imageButton3"
@@ -92,9 +92,10 @@
                 android:layout_margin="8dp"
                 android:background="@android:color/transparent"
                 android:contentDescription="Event 3"
-                android:src="@drawable/background" />
+                android:src="@drawable/eventplaceholder" />
 
         </LinearLayout>
+
     </RelativeLayout>
 
 
@@ -104,7 +105,5 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="@color/black"
-        app:menu="@menu/vertical_navigation_menu"
-        android:visibility="gone"/>
-
+        app:menu="@menu/vertical_navigation_menu" />
 </androidx.drawerlayout.widget.DrawerLayout>
