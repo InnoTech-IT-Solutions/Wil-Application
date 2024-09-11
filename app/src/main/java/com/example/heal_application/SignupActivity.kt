@@ -2,6 +2,10 @@ package com.example.heal_application
 
 import android.content.Intent
 import android.os.Bundle
+import android.graphics.Color
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.style.ForegroundColorSpan
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
 import android.widget.EditText
@@ -33,6 +37,25 @@ class SignupActivity : AppCompatActivity() {
         confirmPasswordEditText = findViewById(R.id.confirmPasswordEditText)
         signupButton = findViewById(R.id.signupButton)
         loginTextButton = findViewById(R.id.loginTextButton)
+
+
+        //Highlighting "Log In!"
+        val fulltext = "Already have an account? Log In!"
+        val spannableString = SpannableString(fulltext)
+
+        //Setting color for "Log In!"
+        val loginColorSpan = ForegroundColorSpan(Color.BLUE)
+        val startIndex = fulltext.indexOf("Log In!")
+        val endIndex = startIndex + "Log In!".length
+        spannableString.setSpan(
+            loginColorSpan,
+            startIndex,
+            endIndex,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        // Setting spannable to loginTextButton TV
+        loginTextButton.text = spannableString
 
         signupButton.setOnClickListener {
             val name = nameEditText.text.toString().trim()
