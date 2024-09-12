@@ -107,10 +107,16 @@ class HomeActivity : AppCompatActivity() {
 
         calendarButton.setOnClickListener {
             // Handle calendar navigation
+            val intent = Intent(this, CalendarActivity::class.java)
+            startActivity(intent)
+            finish()
         }
 
         aboutButton.setOnClickListener {
             // Handle about navigation
+            val intent = Intent(this, AboutActivity::class.java)
+            startActivity(intent)
+            finish()
         }
 
         leftButton.setOnClickListener {
