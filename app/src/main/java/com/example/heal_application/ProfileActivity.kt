@@ -16,6 +16,7 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var profileEmail : TextView
     private lateinit var auth: FirebaseAuth
     private lateinit var currentUser : FirebaseUser
+    private lateinit var editProfileButton: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
@@ -27,6 +28,8 @@ class ProfileActivity : AppCompatActivity() {
         homeButton = findViewById(R.id.homeButton)
         profileName = findViewById(R.id.profileName)
         profileEmail = findViewById(R.id.profileEmail)
+        editProfileButton = findViewById(R.id.editProfileButton)
+
 
         //Display user's details
         profileName.text = currentUser.displayName?: "Unknown User"
@@ -47,6 +50,12 @@ class ProfileActivity : AppCompatActivity() {
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
             finish()  // Close Profile Activity
+        }
+
+        editProfileButton.setOnClickListener {
+            val intent = Intent(this,EditProfile::class.java)
+            startActivity(intent)
+            finish() //Close Profile Activity
         }
     }
 }

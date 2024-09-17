@@ -8,6 +8,7 @@ android {
     namespace = "com.example.heal_application"
     compileSdk = 34
 
+    
     defaultConfig {
         applicationId = "com.example.heal_application"
         minSdk = 26
@@ -34,7 +35,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
 }
+
+
 
 dependencies {
 

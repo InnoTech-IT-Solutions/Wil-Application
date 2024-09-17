@@ -15,12 +15,14 @@
         android:theme="@style/Theme.Heal_Application"
         tools:targetApi="31">
         <activity
+            android:name=".EditProfile"
+            android:exported="false" />
+        <activity
             android:name=".AboutActivity"
             android:exported="false" />
         <activity
             android:name=".CalendarActivity"
-            android:exported="false" />
-        <!-- Splash Screen Activity -->
+            android:exported="false" /> <!-- Splash Screen Activity -->
         <activity
             android:name=".SplashActivity"
             android:exported="true"
@@ -49,7 +51,6 @@
         <activity
             android:name=".EventsActivity"
             android:exported="true" />
-
     </application>
 
 </manifest>
