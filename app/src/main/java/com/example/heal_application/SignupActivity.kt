@@ -67,6 +67,9 @@ class SignupActivity : AppCompatActivity() {
                 Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_SHORT).show()
             } else if (password != confirmPassword) {
                 Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
+            } else if (!isPasswordValid(password)) {
+                // Show an error message if the password does not meet the requirements
+                Toast.makeText(this, "Password must be at least 8 characters long, include a mix of upper and lower case letters, numbers, and special characters.", Toast.LENGTH_LONG).show()
             } else {
                 createUser(email,password,name)
             }
@@ -117,6 +120,11 @@ class SignupActivity : AppCompatActivity() {
                     }
                 }
         }
+    }
+    // Password validation function
+    private fun isPasswordValid(password: String): Boolean {
+        val passwordPattern = Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#\$%^&+=!]).{8,}$")
+        return passwordPattern.matches(password)
     }
 
         }

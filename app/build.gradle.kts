@@ -8,7 +8,7 @@ android {
     namespace = "com.example.heal_application"
     compileSdk = 34
 
-    
+
     defaultConfig {
         applicationId = "com.example.heal_application"
         minSdk = 26
