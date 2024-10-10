@@ -8,7 +8,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
         <!-- App Logo -->
         <ImageView
@@ -25,7 +26,6 @@
             android:id="@+id/aboutAppName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:text="Heal Foundation"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -37,7 +37,6 @@
             android:id="@+id/aboutVersion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:text="Version 1.0.0"
             android:textSize="16sp"
             android:textColor="@color/gray"
@@ -90,8 +89,25 @@
             android:layout_height="wrap_content"
             android:text="For support, please email us at: healfoundationsa@gmail.com"
             android:textSize="16sp"
-            android:textColor="@color/gray" />
+            android:textColor="@color/gray"
+            android:layout_marginBottom="24dp" />
 
+        <!-- Maps Layout -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp">
+
+            <WebView
+                android:id="@+id/mapView"
+                android:layout_width="match_parent"
+                android:layout_height="300dp" />
+
+        </LinearLayout>
+
+        <!-- Home button -->
         <Button
             android:id="@+id/homeButton"
             android:layout_width="wrap_content"
