@@ -8,10 +8,10 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 
 private lateinit var homeButton: Button
-class AboutActivity : AppCompatActivity() {
+class AboutActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_about)
+        layoutInflater.inflate(R.layout.activity_about, findViewById(R.id.content_frame))
 
         val webView: WebView = findViewById(R.id.mapView)
         homeButton = findViewById(R.id.homeButton)

@@ -36,9 +36,6 @@
         android:text="Login"
         android:textColor="@android:color/white" />
 
-    <!-- Navigation Bar Below the Logo and Login Button -->
-
-    <!-- Image in the Center with Left and Right Navigation Buttons -->
 
     <LinearLayout
         android:id="@+id/navigationBar"

@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-class ProfileActivity : AppCompatActivity() {
+class ProfileActivity : BaseActivity() {
 
     private lateinit var logoutButton : Button
     private lateinit var homeButton: Button
@@ -19,7 +19,7 @@ class ProfileActivity : AppCompatActivity() {
     private lateinit var editProfileButton: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_profile)
+        layoutInflater.inflate(R.layout.activity_profile, findViewById(R.id.content_frame))
 
         auth = FirebaseAuth.getInstance()
         currentUser = auth.currentUser!!

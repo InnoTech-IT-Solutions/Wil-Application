@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Heal_Application</string>
+    <string name="app_name">Heal Foundation</string>
     <string-array name="theme_options">
         <item>Light</item>
         <item>Dark</item>
@@ -8,4 +8,6 @@
         <item>light</item>
         <item>dark</item>
     </string-array>
+    <string name="navigation_drawer_open">Open Navigation Drawer</string>
+    <string name="navigation_drawer_close">Close Navigation Drawer</string>
 </resources>

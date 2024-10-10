@@ -6,10 +6,10 @@ import android.os.Bundle
 import android.widget.Button
 
 private lateinit var homeButton: Button
-class EventsActivity : AppCompatActivity() {
+class EventsActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_events)
+        layoutInflater.inflate(R.layout.activity_events, findViewById(R.id.content_frame))
 
 
         homeButton = findViewById(R.id.homeButton)

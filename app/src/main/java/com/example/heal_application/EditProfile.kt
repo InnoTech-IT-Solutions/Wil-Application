@@ -9,7 +9,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
 
-class EditProfile : AppCompatActivity() {
+class EditProfile : BaseActivity() {
 
     private lateinit var currentUser: FirebaseUser
     private lateinit var auth: FirebaseAuth
@@ -20,7 +20,7 @@ class EditProfile : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_edit_profile)
+        layoutInflater.inflate(R.layout.activity_edit_profile, findViewById(R.id.content_frame))
 
         // Initialize FirebaseAuth
         auth = FirebaseAuth.getInstance()

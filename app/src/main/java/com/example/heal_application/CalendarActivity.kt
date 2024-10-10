@@ -3,10 +3,10 @@ package com.example.heal_application
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class CalendarActivity : AppCompatActivity() {
+class CalendarActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_calendar)
+        layoutInflater.inflate(R.layout.activity_calendar, findViewById(R.id.content_frame))
     }
 
 }
