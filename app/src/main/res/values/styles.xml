@@ -3,5 +3,8 @@
     <style name="CustomButton" parent="Widget.Material3.Button">
         <item name="android:backgroundTint">@color/blue</item>
         <item name="android:textColor">@color/white</item>
+        <item name="colorPrimary">@color/darkgreen</item>
+        <item name="colorPrimaryVariant">@color/darkgreen</item>
+        <item name="colorOnPrimary">@color/white</item> <!-- Text color on toolbar -->
     </style>
 </resources>

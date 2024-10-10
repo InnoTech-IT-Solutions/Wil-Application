@@ -8,6 +8,7 @@ import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import android.content.Intent
 import android.view.MenuItem
+import androidx.core.content.ContextCompat
 
 open class BaseActivity : AppCompatActivity() {
 
@@ -20,6 +21,7 @@ open class BaseActivity : AppCompatActivity() {
 
         drawerLayout = findViewById(R.id.drawerLayout)
         val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
+        toolbar.setBackgroundColor(ContextCompat.getColor(this, R.color.darkgreen))
 
         // Set up the toolbar
         setSupportActionBar(toolbar)
