@@ -32,7 +32,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/rounded_button"
+        style="@style/CustomButton"
         android:text="Login"
         android:textColor="@android:color/white" />
 
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/logoImageView"
         android:layout_marginTop="1dp"
-        android:background="@color/green"
+        android:background="@color/darkgreen"
         android:orientation="horizontal"
         android:padding="6dp">
 
@@ -53,8 +53,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/rounded_button"
             android:text="Events"
+            style="@style/CustomButton"
             android:textColor="@android:color/white" />
 
         <!-- Settings Button -->
@@ -63,8 +63,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/rounded_button"
             android:text="Settings"
+            style="@style/CustomButton"
             android:textColor="@android:color/white" />
 
         <!-- Calendar Button -->
@@ -73,7 +73,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/rounded_button"
+            style="@style/CustomButton"
             android:text="Calendar"
             android:textColor="@android:color/white" />
 
@@ -83,7 +83,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/rounded_button"
+            style="@style/CustomButton"
             android:text="About"
             android:textColor="@android:color/white" />
     </LinearLayout>
