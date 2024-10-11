@@ -21,4 +21,10 @@
         android:icon="@drawable/logouticon"
         android:title="Logout" />
 
+    <item
+        android:id="@+id/nav_admin"
+        android:icon="@drawable/adminicon"
+        android:title="Admin Dashboard" />
+
+
 </menu>

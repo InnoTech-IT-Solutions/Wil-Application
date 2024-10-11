@@ -1,11 +1,11 @@
 package com.example.heal_application
 
-import androidx.appcompat.app.AppCompatActivity
+
 import android.os.Bundle
 
-class AdminDashboard : AppCompatActivity() {
+class AdminDashboard : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_admin_dashboard)
+        layoutInflater.inflate(R.layout.activity_admin_dashboard, findViewById(R.id.content_frame))
     }
 }
