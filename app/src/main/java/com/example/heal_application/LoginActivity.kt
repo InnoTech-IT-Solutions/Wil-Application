@@ -6,12 +6,15 @@ import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.ForegroundColorSpan
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
+import com.google.firebase.auth.FirebaseUser
 
 class LoginActivity : AppCompatActivity() {
 
@@ -21,6 +24,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var loginButton: Button
     private lateinit var forgotPasswordButton: TextView
     private lateinit var signupButton: TextView
+    private lateinit var database: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +32,7 @@ class LoginActivity : AppCompatActivity() {
 
         //Firebase Auth
         auth = FirebaseAuth.getInstance()
+        database = FirebaseDatabase.getInstance().reference
 
         emailEditText = findViewById(R.id.emailEditText)
         passwordEditText = findViewById(R.id.passwordEditText)
@@ -58,8 +63,7 @@ class LoginActivity : AppCompatActivity() {
             val password = passwordEditText.text.toString().trim()
 
             if (email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "Please enter both email and password", Toast.LENGTH_SHORT)
-                    .show()
+                Toast.makeText(this, "Please enter both email and password", Toast.LENGTH_SHORT).show()
             } else {
                 loginUser(email, password)
             }
@@ -73,7 +77,6 @@ class LoginActivity : AppCompatActivity() {
             // Navigate to Signup screen
             val intent = Intent(this, SignupActivity::class.java)
             startActivity(intent)
-
         }
     }
 
@@ -81,23 +84,55 @@ class LoginActivity : AppCompatActivity() {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Sign in success, navigate to home screen
-                    Toast.makeText(
-                        this,
-                        "Login Successful!",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    val intent = Intent(this, HomeActivity::class.java)
-                    startActivity(intent)
-                    finish() // Close the LoginActivity
+                    // Get the currently signed-in user
+                    val user = auth.currentUser
+                    if (user != null) {
+                        // Check the user role
+                        checkUserRole(user)
+                    } else {
+                        Toast.makeText(this, "User data not found. Please try again.", Toast.LENGTH_SHORT).show()
+                    }
                 } else {
-                    // If sign in fails, display a message to the user.
-                    Toast.makeText(
-                        this,
-                        "Authentication failed. Please check your email and password.",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    // If sign-in fails, display a message to the user.
+                    Toast.makeText(this, "Authentication failed. Please check your email and password.", Toast.LENGTH_SHORT).show()
                 }
             }
     }
+
+    private fun checkUserRole(user: FirebaseUser) {
+        val emailKey = user.email?.replace(".", ",") ?: return
+
+        // Debugging: log the formatted email key
+        Log.d("LoginActivity", "Checking role for email key: $emailKey")
+
+        database.child("users").child(emailKey).child("role")
+            .addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val role = snapshot.getValue(String::class.java)
+                    Log.d("LoginActivity", "Retrieved role: $role")
+
+                    if (role == "admin") {
+                        Toast.makeText(this@LoginActivity, "Welcome, Admin!", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this@LoginActivity, AdminDashboard::class.java)
+                        startActivity(intent)
+                    } else {
+                        Toast.makeText(this@LoginActivity, "Welcome, Member!", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+                        startActivity(intent)
+                    }
+
+                    finish() // Close the LoginActivity
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.e("LoginActivity", "Error retrieving user role: ${error.message}")
+                    Toast.makeText(this@LoginActivity, "Welcome, Member!", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this@LoginActivity, HomeActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+            })
+    }
+
+
 }
