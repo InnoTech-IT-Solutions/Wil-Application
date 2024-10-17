@@ -100,7 +100,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun checkUserRole(user: FirebaseUser) {
-        val emailKey = user.email?.replace(".", ",") ?: return
+        val emailKey = user.email?.replace(".", "_")?.replace(",", "_") ?: return
 
         // Debugging: log the formatted email key
         Log.d("LoginActivity", "Checking role for email key: $emailKey")
@@ -115,6 +115,10 @@ class LoginActivity : AppCompatActivity() {
                         Toast.makeText(this@LoginActivity, "Welcome, Admin!", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this@LoginActivity, AdminDashboard::class.java)
                         startActivity(intent)
+                    } else if (role == null) {
+                        // If role is not found
+                        Log.e("LoginActivity", "Role not found for user: $emailKey")
+                        Toast.makeText(this@LoginActivity, "Error: Role not found.", Toast.LENGTH_SHORT).show()
                     } else {
                         Toast.makeText(this@LoginActivity, "Welcome, Member!", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this@LoginActivity, HomeActivity::class.java)
@@ -126,13 +130,14 @@ class LoginActivity : AppCompatActivity() {
 
                 override fun onCancelled(error: DatabaseError) {
                     Log.e("LoginActivity", "Error retrieving user role: ${error.message}")
-                    Toast.makeText(this@LoginActivity, "Welcome, Member!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@LoginActivity, "Error retrieving role: ${error.message}", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this@LoginActivity, HomeActivity::class.java)
                     startActivity(intent)
                     finish()
                 }
             })
     }
+
 
 
 }
