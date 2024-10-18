@@ -26,7 +26,7 @@ class CalendarActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_calendar)
+        layoutInflater.inflate(R.layout.activity_calendar, findViewById(R.id.content_frame))
 
         // Initialize views
         calendarView = findViewById(R.id.calendarView)

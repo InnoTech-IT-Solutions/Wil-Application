@@ -87,8 +87,8 @@ class LoginActivity : AppCompatActivity() {
                     // Get the currently signed-in user
                     val user = auth.currentUser
                     if (user != null) {
-                        // Check the user role
-                        checkUserRole(user)
+                        // Check if the user is an admin
+                        checkIfAdmin(user)
                     } else {
                         Toast.makeText(this, "User data not found. Please try again.", Toast.LENGTH_SHORT).show()
                     }
@@ -99,45 +99,39 @@ class LoginActivity : AppCompatActivity() {
             }
     }
 
-    private fun checkUserRole(user: FirebaseUser) {
+    private fun checkIfAdmin(user: FirebaseUser) {
         val emailKey = user.email?.replace(".", "_")?.replace(",", "_") ?: return
 
-        // Debugging: log the formatted email key
-        Log.d("LoginActivity", "Checking role for email key: $emailKey")
+        // Log for debugging
+        Log.d("LoginActivity", "Checking admin role for email key: $emailKey")
 
+        // Check if the user is an admin in the Firebase Database
         database.child("users").child(emailKey).child("role")
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val role = snapshot.getValue(String::class.java)
-                    Log.d("LoginActivity", "Retrieved role: $role")
-
                     if (role == "admin") {
+                        // If the user is an admin, go to the Admin Dashboard
                         Toast.makeText(this@LoginActivity, "Welcome, Admin!", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this@LoginActivity, AdminDashboard::class.java)
                         startActivity(intent)
-                    } else if (role == null) {
-                        // If role is not found
-                        Log.e("LoginActivity", "Role not found for user: $emailKey")
-                        Toast.makeText(this@LoginActivity, "Error: Role not found.", Toast.LENGTH_SHORT).show()
                     } else {
-                        Toast.makeText(this@LoginActivity, "Welcome, Member!", Toast.LENGTH_SHORT).show()
+                        // If the user is not an admin, go to the Home screen
+                        Toast.makeText(this@LoginActivity, "Welcome!", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this@LoginActivity, HomeActivity::class.java)
                         startActivity(intent)
                     }
-
-                    finish() // Close the LoginActivity
+                    finish()
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    Log.e("LoginActivity", "Error retrieving user role: ${error.message}")
-                    Toast.makeText(this@LoginActivity, "Error retrieving role: ${error.message}", Toast.LENGTH_SHORT).show()
+                    Log.e("LoginActivity", "Error retrieving role: ${error.message}")
+                    // In case of an error, treat as regular user and go to Home screen
+                    Toast.makeText(this@LoginActivity, "Welcome!", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this@LoginActivity, HomeActivity::class.java)
                     startActivity(intent)
                     finish()
                 }
             })
     }
-
-
-
 }

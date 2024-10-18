@@ -12,6 +12,7 @@ import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
+import android.util.Log
 
 open class BaseActivity : AppCompatActivity() {
 
@@ -83,24 +84,35 @@ open class BaseActivity : AppCompatActivity() {
             }
         }
 
+        // By default, hide the Admin Dashboard item
+        val adminMenuItem = navigationView.menu.findItem(R.id.nav_admin)
+        adminMenuItem.isVisible = false
+
         // Check user role if logged in
         val currentUser = auth.currentUser
-        currentUser?.let {
-            checkUserRole(it)
+        if (currentUser != null) {
+            checkUserRole(currentUser)
+        } else {
+            // Hide admin menu if no user is logged in
+            adminMenuItem.isVisible = false
         }
     }
 
     private fun checkUserRole(user: FirebaseUser) {
-        val emailKey = user.email?.replace(".", ",") ?: return
+        val emailKey = user.email?.replace(".", "_")?.replace(",", "_") ?: return
 
+        // Listen for the user role in Firebase
         database.child("users").child(emailKey).child("role")
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    isAdmin = snapshot.getValue(String::class.java) == "admin"
-                    updateNavigationMenu()
+                    val role = snapshot.getValue(String::class.java)
+                    isAdmin = (role == "admin") // Check if the user is an admin
+                    Log.d("BaseActivity", "Role for $emailKey: $role")
+                    updateNavigationMenu() // Always update the menu after role check
                 }
 
                 override fun onCancelled(error: DatabaseError) {
+                    Log.e("BaseActivity", "Error retrieving role: ${error.message}")
                     isAdmin = false
                     updateNavigationMenu()
                 }
@@ -111,13 +123,12 @@ open class BaseActivity : AppCompatActivity() {
         val navigationView: NavigationView = findViewById(R.id.navigationView)
         val adminMenuItem = navigationView.menu.findItem(R.id.nav_admin)
 
-        // Make the Admin Dashboard item visible or set its text based on the role
+        // Only make Admin Dashboard item visible for admins
         if (isAdmin) {
             adminMenuItem.isVisible = true
             adminMenuItem.title = "Admin Dashboard"
         } else {
-            adminMenuItem.isVisible = true // Show the item but change its title for non-admins
-            adminMenuItem.title = "Permission Denied"
+            adminMenuItem.isVisible = false // Hide for non-admin users
         }
     }
 
@@ -129,3 +140,4 @@ open class BaseActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 }
+
