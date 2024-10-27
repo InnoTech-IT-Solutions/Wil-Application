@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/homeicon"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/nav_calendar"
+        android:icon="@drawable/calendaricon"
+        android:title="Calendar" />
+
+    <item
+        android:id="@+id/nav_settings"
+        android:icon="@drawable/settingsicon"
+        android:title="Settings" />
+
+    <item
+        android:id="@+id/nav_logout"
+        android:icon="@drawable/logouticon"
+        android:title="Logout" />
+
+    <item
+        android:id="@+id/nav_admin"
+        android:icon="@drawable/adminicon"
+        android:title="Admin Dashboard" />
+
+
+</menu>
