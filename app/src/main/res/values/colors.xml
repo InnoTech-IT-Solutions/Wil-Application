@@ -7,5 +7,7 @@
     <color name="gray">#41423E</color>
     <color name="blue">#0D47A1</color>
     <color name="darkgreen">#33691E</color>
+    <color name="teal_700">#00796B</color>
+    <color name="green1">#51A82F</color>
 
 </resources>
