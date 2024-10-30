@@ -15,4 +15,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "Heal_Application"
 include(":app")
- 
