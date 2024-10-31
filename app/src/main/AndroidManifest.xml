@@ -57,6 +57,9 @@
         <activity
             android:name=".EventsActivity"
             android:exported="true" />
+        <activity
+            android:name=".DonationActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

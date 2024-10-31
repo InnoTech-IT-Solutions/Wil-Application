@@ -97,15 +97,17 @@
         android:orientation="horizontal">
 
         <!-- Left Button -->
+
+        <!-- Image View -->
+
         <Button
             android:id="@+id/leftButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            android:text="Left"
+            android:foreground="@drawable/arrow_f"
             android:textColor="@color/black" />
 
-        <!-- Image View -->
         <ImageView
             android:id="@+id/centerImageView"
             android:layout_width="200dp"
@@ -121,7 +123,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            android:text="Right"
+            android:foreground="@drawable/arrow_b"
             android:textColor="@color/black" />
 
     </LinearLayout>
@@ -161,5 +163,18 @@
         android:background="@drawable/rounded_button"
         android:text="Logout"
         android:visibility="gone"/>
+
+    <!-- Donate Button at the bottom center -->
+    <Button
+        android:id="@+id/donateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Donate"
+        android:backgroundTint="@color/blue"
+        android:textColor="@android:color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp" />
+
 
 </RelativeLayout>

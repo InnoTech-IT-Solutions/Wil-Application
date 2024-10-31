@@ -25,6 +25,7 @@ class HomeActivity : BaseActivity() {
     private lateinit var centerImageView: ImageView
     private lateinit var auth: FirebaseAuth
     private lateinit var logoutButton : Button
+    private lateinit var donateBtn : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +44,7 @@ class HomeActivity : BaseActivity() {
         rightButton = findViewById(R.id.rightButton)
         centerImageView = findViewById(R.id.centerImageView)
         logoutButton = findViewById(R.id.logoutButton)
+        donateBtn = findViewById(R.id.donateButton)
 
         //Checking if user is logged in
         val currentUser: FirebaseUser? = auth.currentUser
@@ -126,12 +128,18 @@ class HomeActivity : BaseActivity() {
         rightButton.setOnClickListener {
             // Handle right image navigation
         }
+
+        donateBtn.setOnClickListener {
+            val intent = Intent(this, DonationActivity::class.java)
+            startActivity(intent)
+        }
         profileTextView.setOnClickListener {
             startActivity(Intent(this, ProfileActivity::class.java))
         }
         userImageView.setOnClickListener {
             startActivity(Intent(this, ProfileActivity::class.java))
         }
+
 
     }
 }
