@@ -8,13 +8,6 @@
         android:summary="Receive notifications from the app"
         android:defaultValue="true" />
 
-    <!-- EditText Preference -->
-    <EditTextPreference
-        android:key="username"
-        android:title="Username"
-        android:summary="Enter your username"
-        android:defaultValue=""
-        android:inputType="text" />
 
     <!-- List Preference -->
     <ListPreference

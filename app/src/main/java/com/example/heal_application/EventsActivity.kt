@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 
 private lateinit var homeButton: Button
+private lateinit var calendarButton: Button
 class EventsActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -13,10 +14,15 @@ class EventsActivity : BaseActivity() {
 
 
         homeButton = findViewById(R.id.homeButton)
-
+        calendarButton = findViewById(R.id.calendarButton)
 
         homeButton.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+            finish()  // Close EventsActivity
+        }
+        calendarButton.setOnClickListener {
+            val intent = Intent(this, CalendarActivity::class.java)
             startActivity(intent)
             finish()  // Close EventsActivity
         }
