@@ -22,27 +22,12 @@
             android:textColor="?attr/colorOnSurface" />
 
         <!-- Language Preference -->
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Preferred Language"
-            android:paddingBottom="4dp"
-            android:textColor="?attr/colorOnSurface" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:hintEnabled="true"
-            app:hintAnimationEnabled="true">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/languageEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:hint="Language"
-                android:textColor="?attr/colorOnSurface" />
-        </com.google.android.material.textfield.TextInputLayout>
+            app:hintAnimationEnabled="true"/>
 
         <!-- Notifications Switch -->
         <com.google.android.material.textview.MaterialTextView
@@ -52,6 +37,7 @@
             android:paddingTop="16dp"
             android:textColor="?attr/colorOnSurface" />
 
+        <!-- Dark Mode Switch -->
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/notificationsSwitch"
             android:layout_width="wrap_content"
@@ -59,7 +45,6 @@
             android:layout_gravity="end"
             android:checked="false" />
 
-        <!-- Dark Mode Switch -->
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

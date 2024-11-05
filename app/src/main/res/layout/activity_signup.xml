@@ -77,8 +77,8 @@
         <!-- Already Have an Account? Login Button -->
         <TextView
             android:id="@+id/loginTextButton"
-            android:layout_width="wrap_content"
-            android:layout_height="22dp"
+            android:layout_width="226dp"
+            android:layout_height="42dp"
             android:clickable="true"
             android:focusable="true"
             android:text="Already have an account? Log In!"

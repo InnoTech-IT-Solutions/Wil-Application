@@ -2,25 +2,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:padding="4dp"
-        android:textColor="@android:color/black"
-        android:textSize="16sp"
         android:gravity="center"
-        android:text="@string/director_s_title"/>
+        android:padding="4dp"
+        android:text="@string/director_s_title"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
     <!-- Image for the director -->
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_width="325dp"
+        android:layout_height="375dp"
         android:scaleType="centerCrop" />
 
     <!-- Description text below the image -->
@@ -29,10 +28,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:padding="4dp"
-        android:textColor="@android:color/black"
-        android:textSize="16sp"
         android:gravity="center"
-        android:text="@string/director_s_description" />
+        android:padding="4dp"
+        android:text="@string/director_s_description"
+        android:textColor="@android:color/black"
+        android:textSize="16sp" />
 
 </LinearLayout>
