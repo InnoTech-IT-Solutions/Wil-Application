@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="@color/white">
+    android:background="?attr/colorSurface">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        tools:ignore="WebViewLayout">
 
         <!-- App Logo -->
         <ImageView
@@ -22,104 +24,96 @@
             android:layout_marginBottom="16dp" />
 
         <!-- App Name -->
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/aboutAppName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Heal Foundation"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:textColor="@color/black"
+            android:textColor="?attr/colorOnSurface"
             android:layout_marginBottom="8dp" />
 
         <!-- Version -->
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/aboutVersion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Version 1.0.0"
             android:textSize="16sp"
-            android:textColor="@color/gray"
+            android:textColor="?attr/colorOnSurfaceVariant"
             android:layout_marginBottom="16dp" />
 
         <!-- About Description -->
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/aboutDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="This app is designed to help you manage events, settings, and more. It offers a seamless experience to interact with our platform and explore new opportunities."
             android:textSize="16sp"
-            android:textColor="@color/black"
+            android:textColor="?attr/colorOnSurface"
             android:layout_marginBottom="24dp" />
 
-        <!-- Developer Info -->
-        <TextView
+        <!-- Developer Info Title -->
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/aboutDeveloperTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Developer"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="@color/black"
+            android:textColor="?attr/colorOnSurface"
             android:layout_marginBottom="8dp" />
 
-        <TextView
+        <!-- Developer Info -->
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/aboutDeveloperInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Developed by InnoTech-IT-Solutions. We are committed to providing excellence."
             android:textSize="16sp"
-            android:textColor="@color/gray"
+            android:textColor="?attr/colorOnSurfaceVariant"
             android:layout_marginBottom="24dp" />
 
-        <!-- Contact Info -->
-        <TextView
+        <!-- Contact Info Title -->
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/aboutContactTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Contact Us"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="@color/black"
+            android:textColor="?attr/colorOnSurface"
             android:layout_marginBottom="8dp" />
 
-        <TextView
+        <!-- Contact Info -->
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/aboutContactInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="For support, please email us at: healfoundationsa@gmail.com"
             android:textSize="16sp"
-            android:textColor="@color/gray"
+            android:textColor="?attr/colorOnSurfaceVariant"
             android:layout_marginBottom="24dp" />
 
-        <!-- Maps Layout -->
-        <LinearLayout
+        <!-- Map View for Location -->
+        <WebView
+            android:id="@+id/mapView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
+            android:layout_height="300dp"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="16dp" />
 
-            <WebView
-                android:id="@+id/mapView"
-                android:layout_width="match_parent"
-                android:layout_height="300dp" />
-
-        </LinearLayout>
-
-        <!-- Home button -->
-        <Button
+        <!-- Home Button -->
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/homeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginStart="16dp"
+            android:text="Go to Home"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            style="@style/CustomButton"
             android:layout_marginBottom="16dp"
-            android:text="Go to Home" />
-
+            android:textColor="?attr/colorOnPrimary"
+            style="@style/Widget.Material3.Button" />
     </LinearLayout>
-
 </ScrollView>

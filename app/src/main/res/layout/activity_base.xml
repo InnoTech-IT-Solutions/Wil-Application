@@ -11,14 +11,18 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!-- Add a Toolbar here -->
+        <!-- Toolbar -->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            app:title="Heal Foundation" />
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:title="Heal Foundation"
+            app:titleTextColor="?attr/colorOnPrimary"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
+        <!-- Main Content Frame -->
         <FrameLayout
             android:id="@+id/content_frame"
             android:layout_width="match_parent"
@@ -31,6 +35,9 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:menu="@menu/vertical_navigation_menu" />
+        app:menu="@menu/vertical_navigation_menu"
+        app:background="?attr/colorSurface"
+        app:itemTextColor="?attr/colorOnSurface"
+        app:itemIconTint="?attr/colorOnSurface" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

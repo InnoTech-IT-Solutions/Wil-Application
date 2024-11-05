@@ -10,4 +10,5 @@
         <item name="android:elevation">4dp</item>
         <item name="colorOnPrimary">@color/white</item> <!-- Text color on toolbar -->
     </style>
+
 </resources>

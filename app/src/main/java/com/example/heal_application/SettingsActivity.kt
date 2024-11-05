@@ -1,36 +1,69 @@
+// SettingsActivity.kt
 package com.example.heal_application
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
+import android.widget.Switch
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.switchmaterial.SwitchMaterial
+import com.google.android.material.textfield.TextInputEditText
 
-class SettingsActivity : BaseActivity() {
-
-    private lateinit var homeButton: Button
+class SettingsActivity : AppCompatActivity() {
+    private lateinit var languageEditText: EditText
+    private lateinit var notificationsSwitch: Switch
+    private lateinit var darkModeSwitch: Switch
+    private lateinit var settingsRepository: SettingsRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        layoutInflater.inflate(R.layout.activity_settings, findViewById(R.id.content_frame))
+        setContentView(R.layout.activity_settings)
 
-        // Load the SettingsFragment
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.settings_container, SettingsFragment())
-            .commit()
+        // Initialize views
+        languageEditText = findViewById(R.id.languageEditText)
+        notificationsSwitch = findViewById(R.id.notificationsSwitch)
+        darkModeSwitch = findViewById(R.id.darkModeSwitch)
+        settingsRepository = SettingsRepository()
+        val notificationsSwitch = findViewById<SwitchMaterial>(R.id.notificationsSwitch)
+        val darkModeSwitch = findViewById<SwitchMaterial>(R.id.darkModeSwitch)
+        val languageEditText = findViewById<TextInputEditText>(R.id.languageEditText)
+        val saveSettingsButton = findViewById<MaterialButton>(R.id.saveSettingsButton)
 
-        homeButton = findViewById(R.id.homeButton)
-
-
-        homeButton.setOnClickListener {
-            // Navigate back to the HomeActivity
-            val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
-            finish() // Close the SettingsActivity
+        // Save settings when the save button is clicked
+        findViewById<Button>(R.id.saveSettingsButton).setOnClickListener {
+            saveUserSettings()
         }
 
+        // Load user settings
+        loadUserSettings()
+    }
 
+    private fun loadUserSettings() {
+        settingsRepository.loadSettings(onSuccess = { settings ->
+            // Populate the fields with existing settings
+            settings?.let {
+                languageEditText.setText(it["language"] as? String ?: "")
+                notificationsSwitch.isChecked = it["notifications_enabled"] as? Boolean ?: false
+                darkModeSwitch.isChecked = it["dark_mode"] as? Boolean ?: false
+            }
+        }, onFailure = {
+            Toast.makeText(this, "Failed to load settings", Toast.LENGTH_SHORT).show()
+        })
+    }
 
+    private fun saveUserSettings() {
+        val settings = mapOf(
+            "language" to languageEditText.text.toString(),
+            "notifications_enabled" to notificationsSwitch.isChecked,
+            "dark_mode" to darkModeSwitch.isChecked
+        )
 
+        settingsRepository.saveSettings(settings, onSuccess = {
+            Toast.makeText(this, "Settings saved successfully", Toast.LENGTH_SHORT).show()
+        }, onFailure = {
+            Toast.makeText(this, "Failed to save settings", Toast.LENGTH_SHORT).show()
+        })
     }
 }

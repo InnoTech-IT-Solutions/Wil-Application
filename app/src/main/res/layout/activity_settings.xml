@@ -1,25 +1,87 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- res/layout/activity_settings.xml -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:padding="16dp"
+    android:background="@color/md_theme_surface">
 
-
-    <FrameLayout
-        android:id="@+id/settings_container"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/homeButton" />
-
-    <Button
-        android:id="@+id/homeButton"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="Go to Home" />
+        android:orientation="vertical">
 
-</RelativeLayout>
+        <!-- Page Title -->
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Settings"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:paddingBottom="16dp"
+            android:textColor="?attr/colorOnSurface" />
+
+        <!-- Language Preference -->
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Preferred Language"
+            android:paddingBottom="4dp"
+            android:textColor="?attr/colorOnSurface" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:hintEnabled="true"
+            app:hintAnimationEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/languageEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="Language"
+                android:textColor="?attr/colorOnSurface" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Notifications Switch -->
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enable Notifications"
+            android:paddingTop="16dp"
+            android:textColor="?attr/colorOnSurface" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/notificationsSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:checked="false" />
+
+        <!-- Dark Mode Switch -->
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enable Dark Mode"
+            android:paddingTop="16dp"
+            android:textColor="?attr/colorOnSurface" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/darkModeSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:checked="false" />
+
+        <!-- Save Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/saveSettingsButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:backgroundTint="?attr/colorPrimary"
+            android:text="Save Settings"
+            android:textColor="?attr/colorOnPrimary" />
+    </LinearLayout>
+</ScrollView>

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="@color/white">
+    android:background="@color/md_theme_background">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,7 +19,7 @@
             android:text="Edit Profile"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:textColor="@color/black"
+            android:textColor="@color/md_theme_onBackground"
             android:layout_marginBottom="16dp" />
 
         <!-- Name EditText -->
@@ -27,22 +27,20 @@
             android:id="@+id/profileName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint=""
+            android:hint="Enter your name"
             android:inputType="textPersonName"
             android:padding="12dp"
-            android:layout_marginBottom="16dp"
-             />
+            android:layout_marginBottom="16dp" />
 
         <!-- Email EditText -->
         <EditText
             android:id="@+id/profileEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint=""
+            android:hint="Enter your email"
             android:inputType="textEmailAddress"
             android:padding="12dp"
-            android:layout_marginBottom="16dp"
-             />
+            android:layout_marginBottom="16dp" />
 
         <!-- Password EditText -->
         <EditText
@@ -52,30 +50,29 @@
             android:hint="Password"
             android:inputType="textPassword"
             android:padding="12dp"
-            android:layout_marginBottom="16dp"
-             />
+            android:layout_marginBottom="16dp" />
 
         <!-- Save Changes Button -->
         <Button
             android:id="@+id/saveProfileButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Save Changes"
-            style="@style/CustomButton"
-            android:textColor="@android:color/white"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/rounded_button"
             android:padding="12dp"
-            android:layout_marginBottom="16dp" />
+            android:text="Save Changes"
+            android:textColor="@android:color/white" />
 
         <!-- Back to Profile Button -->
         <Button
             android:id="@+id/cancelButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cancel"
-            style="@style/CustomButton"
-            android:textColor="@android:color/white"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/rounded_button"
             android:padding="12dp"
-            android:layout_marginBottom="16dp" />
+            android:text="Cancel"
+            android:textColor="@android:color/white" />
 
     </LinearLayout>
 </ScrollView>
