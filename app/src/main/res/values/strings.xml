@@ -10,4 +10,6 @@
     </string-array>
     <string name="navigation_drawer_open">Open Navigation Drawer</string>
     <string name="navigation_drawer_close">Close Navigation Drawer</string>
+    <string name="director_s_description">Director\'s Description</string>
+    <string name="director_s_title">Director\'s Title</string>
 </resources>
