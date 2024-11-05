@@ -9,10 +9,13 @@ import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
-import com.google.android.material.navigation.NavigationView
 import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 class CalendarActivity : BaseActivity() {
 
@@ -23,6 +26,7 @@ class CalendarActivity : BaseActivity() {
     private lateinit var toggle: ActionBarDrawerToggle
     private val eventsList = ArrayList<String>()
     private lateinit var eventsAdapter: ArrayAdapter<String>
+    private val dateFormatter = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,8 +47,11 @@ class CalendarActivity : BaseActivity() {
         setupDrawerLayout()
 
         // Listen for date changes on the calendar
-        calendarView.setOnDateChangeListener { view, year, month, dayOfMonth ->
-            val selectedDate = "$dayOfMonth-${month + 1}-$year"
+        calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
+            // Format date as "dd-MM-yyyy"
+            val calendar = Calendar.getInstance()
+            calendar.set(year, month, dayOfMonth)
+            val selectedDate = dateFormatter.format(calendar.time)
             loadEventsForDate(selectedDate)
         }
     }
@@ -72,21 +79,17 @@ class CalendarActivity : BaseActivity() {
         navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.nav_home -> {
-                    // Navigate to Home Activity
                     startActivity(Intent(this, HomeActivity::class.java))
                     true
                 }
                 R.id.nav_calendar -> {
-                    // Stay on the same page
                     true
                 }
                 R.id.nav_settings -> {
-                    // Navigate to Settings Activity
                     startActivity(Intent(this, SettingsActivity::class.java))
                     true
                 }
                 R.id.nav_logout -> {
-                    // Handle logout
                     FirebaseAuth.getInstance().signOut()
                     startActivity(Intent(this, LoginActivity::class.java))
                     finish()
@@ -105,19 +108,20 @@ class CalendarActivity : BaseActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     for (eventSnapshot in snapshot.children) {
-                        val event = eventSnapshot.getValue(String::class.java)
-                        event?.let { eventsList.add(it) }
+                        val title = eventSnapshot.child("title").getValue(String::class.java) ?: "Untitled"
+                        val description = eventSnapshot.child("description").getValue(String::class.java) ?: "No description"
+                        val eventText = "$title - $description"
+                        eventsList.add(eventText)
                     }
                     eventsAdapter.notifyDataSetChanged()
                 } else {
-                    // No events for the selected date
+                    // Show message if there are no events for the selected date
                     eventsList.add("No events on this date")
                     eventsAdapter.notifyDataSetChanged()
                 }
             }
 
             override fun onCancelled(error: DatabaseError) {
-                // Handle possible errors
                 Log.e("CalendarActivity", "Error loading events: ${error.message}")
                 Toast.makeText(this@CalendarActivity, "Error loading events", Toast.LENGTH_SHORT).show()
             }

@@ -11,17 +11,24 @@
         android:layout_height="match_parent">
 
         <!-- Toolbar for the navigation drawer -->
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            android:elevation="4dp"
-            app:title="Heal Foundation"
-            app:titleTextColor="?attr/colorOnPrimary"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
         <!-- CalendarView positioned at the top -->
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="430dp"
+            android:layout_height="72dp"
+            android:layout_marginBottom="596dp"
+            android:background="?attr/colorPrimary"
+            android:elevation="4dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:title="Heal Foundation"
+            app:titleTextColor="?attr/colorOnPrimary" />
+
         <CalendarView
             android:id="@+id/calendarView"
             android:layout_width="0dp"
