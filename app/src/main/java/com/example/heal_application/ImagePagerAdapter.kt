@@ -1,10 +1,13 @@
+
+import com.example.heal_application.R
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.heal_application.R
+
 
 class ImagePagerAdapter(
     private val images: List<Int>,       // List of image resource IDs

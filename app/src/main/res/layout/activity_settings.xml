@@ -15,49 +15,66 @@
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Settings"
-            android:textSize="24sp"
-            android:textStyle="bold"
             android:paddingBottom="16dp"
-            android:textColor="?attr/colorOnSurface" />
+            android:text="Settings"
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-        <!-- Language Preference -->
-
+        <!-- Language Preference (Placeholder, can be filled in later) -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:hintEnabled="true"
-            app:hintAnimationEnabled="true"/>
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true" />
 
-        <!-- Notifications Switch -->
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
+        <!-- Notifications Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Enable Notifications"
+            android:orientation="horizontal"
             android:paddingTop="16dp"
-            android:textColor="?attr/colorOnSurface" />
+            android:gravity="center_vertical">
 
-        <!-- Dark Mode Switch -->
-        <com.google.android.material.switchmaterial.SwitchMaterial
-            android:id="@+id/notificationsSwitch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:checked="false" />
+            <!-- Notifications Text -->
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="243dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="Notifications"
+                android:textColor="?attr/colorOnSurface" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
+            <!-- Notifications Switch -->
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/notificationsSwitch"
+                android:layout_width="85dp"
+                android:layout_height="wrap_content"
+                android:checked="false" />
+        </LinearLayout>
+
+        <!-- Dark Mode Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Enable Dark Mode"
+            android:orientation="horizontal"
             android:paddingTop="16dp"
-            android:textColor="?attr/colorOnSurface" />
+            android:gravity="center_vertical">
 
-        <com.google.android.material.switchmaterial.SwitchMaterial
-            android:id="@+id/darkModeSwitch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:checked="false" />
+            <!-- Dark Mode Text -->
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="251dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="Dark Mode"
+                android:textColor="?attr/colorOnSurface" />
+
+            <!-- Dark Mode Switch -->
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/darkModeSwitch"
+                android:layout_width="77dp"
+                android:layout_height="wrap_content"
+                android:checked="false" />
+        </LinearLayout>
 
         <!-- Save Button -->
         <com.google.android.material.button.MaterialButton
@@ -65,8 +82,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            app:backgroundTint="?attr/colorPrimary"
             android:text="Save Settings"
-            android:textColor="?attr/colorOnPrimary" />
+            android:textColor="?attr/colorOnPrimary"
+            app:backgroundTint="?attr/colorPrimary" />
     </LinearLayout>
 </ScrollView>
