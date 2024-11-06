@@ -41,45 +41,41 @@
         android:orientation="horizontal"
         android:padding="6dp">
 
-        <!-- Events Button -->
-        <Button
-            android:id="@+id/eventsButton"
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/toggleButton"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Events"
-            style="@style/CustomButton"
-            android:textColor="@android:color/white" />
+            android:layout_height="wrap_content">
+            <Button
+                style="?attr/materialButtonOutlinedStyle"
+                android:id="@+id/eventsButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Events"
+                />
+            <Button
+                style="?attr/materialButtonOutlinedStyle"
+                android:id="@+id/settingsButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Settings"
+                />
+            <Button
+                style="?attr/materialButtonOutlinedStyle"
+                android:id="@+id/calendarButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Calendar"
+                />
 
-        <!-- Settings Button -->
-        <Button
-            android:id="@+id/settingsButton"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Settings"
-            style="@style/CustomButton"
-            android:textColor="@android:color/white" />
+            <Button
+                android:id="@+id/aboutButton"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="About" />
+        </com.google.android.material.button.MaterialButtonToggleGroup>
 
-        <!-- Calendar Button -->
-        <Button
-            android:id="@+id/calendarButton"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            style="@style/CustomButton"
-            android:text="Calendar"
-            android:textColor="@android:color/white" />
 
-        <!-- About Button -->
-        <Button
-            android:id="@+id/aboutButton"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            style="@style/CustomButton"
-            android:text="About"
-            android:textColor="@android:color/white" />
     </LinearLayout>
 
     <!-- ViewPager2 for scrolling images with descriptions -->

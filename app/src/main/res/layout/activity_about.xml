@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
+    style="@style/MaterialAlertDialog.Material3.Title.Panel.CenterStacked"
     android:background="?attr/colorSurface">
 
     <LinearLayout
@@ -20,6 +21,7 @@
             android:layout_height="150dp"
             android:layout_gravity="center"
             android:src="@drawable/heallogo"
+
             android:contentDescription="App Logo"
             android:layout_marginBottom="16dp" />
 
@@ -111,9 +113,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Go to Home"
+
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:textColor="?attr/colorOnPrimary"
-            style="@style/Widget.Material3.Button" />
+            android:textColor="@color/black"
+            style="@style/Widget.Material3.Button.ElevatedButton" />
     </LinearLayout>
 </ScrollView>
