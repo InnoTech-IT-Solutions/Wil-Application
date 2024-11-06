@@ -4,89 +4,189 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="?attr/colorSurface">
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Title -->
+        <!-- Support Message -->
         <TextView
-            android:id="@+id/donationTitle"
+            android:id="@+id/supportMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Banking Details"
-            android:textSize="24sp"
+            android:text="Support our cause by donating. Your contributions help us make a difference."
+            android:textSize="16sp"
+            android:textColor="?attr/colorOnSurface"
+            android:gravity="center"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Bank Account Details -->
+        <TextView
+            android:id="@+id/bankDetailsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Bank Account Details"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="?attr/colorOnSurface"
             android:layout_marginBottom="16dp" />
 
-        <!-- Bank Name -->
         <TextView
-            android:id="@+id/bankName"
-            android:layout_width="match_parent"
+            android:id="@+id/bankDetailsDescription"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bank Name: First National Bank"
-            android:textSize="18sp"
-            android:textColor="?attr/colorOnSurface"
-            android:layout_marginBottom="8dp" />
-
-        <!-- Account Number -->
-        <TextView
-            android:id="@+id/accountNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Account Number: 62843090292"
-            android:textSize="18sp"
-            android:textColor="?attr/colorOnSurface"
-            android:layout_marginBottom="8dp" />
-
-        <!-- Branch Code -->
-        <TextView
-            android:id="@+id/branchCode"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Branch Code: 223526"
-            android:textSize="18sp"
-            android:textColor="?attr/colorOnSurface"
-            android:layout_marginBottom="8dp" />
-
-        <!-- Swift Code -->
-        <TextView
-            android:id="@+id/swiftCode"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="SWIFT Code: FRINZAJJ"
-            android:textSize="18sp"
-            android:textColor="?attr/colorOnSurface"
-            android:layout_marginBottom="16dp" />
-
-        <!-- Additional Information -->
-        <TextView
-            android:id="@+id/donationDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Please use your name + surname + HEAL as a reference when making the payment. Thank you for your support!"
+            android:text="Your donations are invaluable to the Heal Team, driving impactful change and transforming lives for a brighter future."
             android:textSize="16sp"
             android:textColor="?attr/colorOnSurface"
-            android:layout_marginBottom="24dp" />
+            android:gravity="center"
+            android:layout_marginBottom="8dp" />
 
-        <!-- Home Button -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/homeButton"
+        <TextView
+            android:id="@+id/bankInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Beneficiary: Arya Pratinidhi Sabha #2\nBank Name: First National Bank\nAccount No: 6284 3090 292\nBranch Name: Westville, Durban\nBranch Code: 223526\nSwift Code: FIRNZAJJ"
+            android:textSize="16sp"
+            android:textColor="?attr/colorOnSurface"
+            android:gravity="center"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Donate Icon -->
+        <ImageView
+            android:id="@+id/donateIcon"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/donateicon" />
+
+        <!-- Drop Off Details -->
+        <TextView
+            android:id="@+id/dropOffTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:text="Go to Home"
-            app:backgroundTint="?attr/colorPrimary"
-            app:iconGravity="textStart"
-            app:iconPadding="8dp"
-            android:textColor="?attr/colorOnPrimary" />
+            android:text="Drop Off"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="?attr/colorOnSurface"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:id="@+id/dropOffDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Our convenient drop-off sites are designed for easy access, ensuring seamless contributions to our initiatives."
+            android:textSize="16sp"
+            android:textColor="?attr/colorOnSurface"
+            android:gravity="center"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/dropOffLocations"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="142 Cherry Road, Clairwood, 4052\n87 Harbottle Road, Overport, 4091"
+            android:textSize="16sp"
+            android:textColor="?attr/colorOnSurface"
+            android:gravity="center"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Drop Off Icon -->
+
+        <!-- EFT Details -->
+        <ImageView
+            android:id="@+id/dropOffIcon"
+            android:layout_width="300dp"
+            android:layout_height="400dp"
+            android:layout_gravity="center"
+            android:src="@drawable/dropofficon" />
+
+        <TextView
+            android:id="@+id/eftDetailsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="EFT Details"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="?attr/colorOnSurface"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:id="@+id/eftDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="If you choose to donate via EFT, your contribution will directly support our mission and help us continue making a positive impact."
+            android:textSize="16sp"
+            android:textColor="?attr/colorOnSurface"
+            android:gravity="center"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/eftReference"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reference: Name+Surname+HEAL"
+            android:textSize="16sp"
+            android:textColor="?attr/colorOnSurface"
+            android:gravity="center"
+            android:layout_marginBottom="16dp" />
+
+        <!-- EFT Icon -->
+        <ImageView
+            android:id="@+id/eftIcon"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/volunteericony" />
+
+        <!-- Sponsorship Details -->
+        <TextView
+            android:id="@+id/sponsorshipTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Sponsorships"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="?attr/colorOnSurface"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:id="@+id/sponsorshipDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="The Heal Foundation welcomes collaborations with sponsors eager to make a meaningful impact on community welfare. As a sponsor, you'll directly impact communities through our diverse initiatives. To learn more about sponsorship benefits and how you can empower communities, contact us today."
+            android:textSize="16sp"
+            android:textColor="?attr/colorOnSurface"
+            android:gravity="center"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/sponsorshipEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email: HEALFOUNDATIONSA@GMAIL.COM"
+            android:textSize="16sp"
+            android:textColor="?attr/colorOnSurface"
+            android:gravity="center"
+            android:autoLink="email"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Sponsorship Icon -->
+        <ImageView
+            android:id="@+id/sponsorshipIcon"
+            android:layout_width="400dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/sponsorshipicon" />
+
     </LinearLayout>
 </ScrollView>

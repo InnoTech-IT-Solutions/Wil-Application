@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 
-
 class DonationActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -12,10 +11,9 @@ class DonationActivity : BaseActivity() {
 
         // Home button functionality
         val homeButton = findViewById<Button>(R.id.homeButton)
-        homeButton.setOnClickListener {
-            // Navigate back to the home activity or desired page
+        homeButton?.setOnClickListener {
             startActivity(Intent(this, HomeActivity::class.java))
-            finish() // Optionally finish the DonationActivity
+            finish()
         }
     }
 }

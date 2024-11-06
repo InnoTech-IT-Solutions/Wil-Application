@@ -1,6 +1,7 @@
 package com.example.heal_application
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -10,19 +11,29 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.messaging.FirebaseMessaging
 import android.util.Log
+import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
+
+import com.google.firebase.auth.FirebaseUser
 
 class SettingsActivity : AppCompatActivity() {
 
     private lateinit var notificationsSwitch: SwitchMaterial
     private lateinit var darkModeSwitch: SwitchMaterial
+    private lateinit var profileTextView: TextView
+    private lateinit var userImageView: ImageView
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
-
+        auth = FirebaseAuth.getInstance()
         // Initialize views
         notificationsSwitch = findViewById(R.id.notificationsSwitch)
         darkModeSwitch = findViewById(R.id.darkModeSwitch)
+        profileTextView = findViewById(R.id.profileTextView)
+        userImageView = findViewById(R.id.userImageView)
         val saveSettingsButton = findViewById<MaterialButton>(R.id.saveSettingsButton)
 
         // Firebase authentication instance
@@ -32,7 +43,28 @@ class SettingsActivity : AppCompatActivity() {
             Toast.makeText(this, "You must be logged in to save settings", Toast.LENGTH_SHORT).show()
             return
         }
+        val currentUser: FirebaseUser? = auth.currentUser
+        if (currentUser != null) {
 
+            profileTextView.visibility = View.VISIBLE
+            userImageView.setImageResource(R.drawable.placeholder)
+            userImageView.visibility = View.VISIBLE
+
+
+            profileTextView.text = "My Profile"
+        } else {
+
+            profileTextView.visibility = View.GONE
+            userImageView.visibility = View.GONE
+
+        }
+        profileTextView.setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
+
+        userImageView.setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
         // Save settings when the save button is clicked
         saveSettingsButton.setOnClickListener {
             saveUserSettings(user.email ?: "")  // Pass the user's email

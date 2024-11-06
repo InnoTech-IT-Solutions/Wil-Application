@@ -4,119 +4,211 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    style="@style/MaterialAlertDialog.Material3.Title.Panel.CenterStacked"
-    android:background="?attr/colorSurface">
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center_horizontal"
-        tools:ignore="WebViewLayout">
+        android:gravity="center_horizontal">
 
-        <!-- App Logo -->
-        <ImageView
-            android:id="@+id/aboutLogo"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_gravity="center"
-            android:src="@drawable/heallogo"
-
-            android:contentDescription="App Logo"
-            android:layout_marginBottom="16dp" />
-
-        <!-- App Name -->
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/aboutAppName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Heal Foundation"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="?attr/colorOnSurface"
-            android:layout_marginBottom="8dp" />
-
-        <!-- Version -->
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/aboutVersion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Version 1.0.0"
-            android:textSize="16sp"
-            android:textColor="?attr/colorOnSurfaceVariant"
-            android:layout_marginBottom="16dp" />
-
-        <!-- About Description -->
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/aboutDescription"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="This app is designed to help you manage events, settings, and more. It offers a seamless experience to interact with our platform and explore new opportunities."
-            android:textSize="16sp"
-            android:textColor="?attr/colorOnSurface"
-            android:layout_marginBottom="24dp" />
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            tools:ignore="WebViewLayout">
 
-        <!-- Developer Info Title -->
+            <!-- App Logo -->
+            <ImageView
+                android:id="@+id/aboutLogo"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:src="@drawable/heallogo"
+
+                android:contentDescription="App Logo"
+                android:layout_marginBottom="16dp" />
+
+            <!-- App Name -->
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/aboutAppName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Heal Foundation"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="?attr/colorOnSurface"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Version -->
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/aboutVersion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Version 1.0.0"
+                android:textSize="16sp"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:layout_marginBottom="16dp" />
+
+            <!-- About Description -->
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/aboutDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="This app is designed to help you manage events, settings, and more. It offers a seamless experience to interact with our platform and explore new opportunities."
+                android:textSize="16sp"
+                android:textColor="?attr/colorOnSurface"
+                android:layout_marginBottom="24dp" />
+
+            <!-- Developer Info Title -->
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/aboutDeveloperTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Developer"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="?attr/colorOnSurface"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Developer Info -->
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/aboutDeveloperInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Developed by InnoTech-IT-Solutions. We are committed to providing excellence."
+                android:textSize="16sp"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:layout_marginBottom="24dp" />
+
+            <!-- Contact Info Title -->
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/aboutContactTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contact Us"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="?attr/colorOnSurface"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Contact Info -->
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/aboutContactInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="For support, please email us at: healfoundationsa@gmail.com"
+                android:textSize="16sp"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:layout_marginBottom="24dp" />
+
+
+
+            <!-- Home Button -->
+
+        </LinearLayout>
+
+        <!-- Title -->
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/aboutDeveloperTitle"
+            android:id="@+id/aboutus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Developer"
+            android:text="About Us"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="?attr/colorOnSurface"
             android:layout_marginBottom="8dp" />
-
-        <!-- Developer Info -->
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/aboutDeveloperInfo"
+        <!-- Description -->
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Developed by InnoTech-IT-Solutions. We are committed to providing excellence."
+            android:text="The Foundation was launched in January 2020 and is managed by a Board of Directors with the emphasis on the younger generation to be groomed as leaders of tomorrow..."
             android:textSize="16sp"
-            android:textColor="?attr/colorOnSurfaceVariant"
+            android:textColor="?attr/colorOnSurface"
             android:layout_marginBottom="24dp" />
-
-        <!-- Contact Info Title -->
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/aboutContactTitle"
+-->
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Contact Us"
-            android:textSize="18sp"
+            android:text="Our Heal Family"
+            android:textSize="20sp"
+            android:textColor="?attr/colorOnSurface"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="155dp"
+                android:layout_height="109dp"
+                android:layout_margin="8dp"
+                android:src="@drawable/healone" />
+
+            <ImageView
+                android:layout_width="180dp"
+                android:layout_height="85dp"
+                android:layout_margin="8dp"
+                android:src="@drawable/healtwo" />
+        </LinearLayout>
+
+        <!-- Vision and Mission Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HealFoundation's Vision"
+            android:textSize="20sp"
+            android:textColor="?attr/colorOnSurface"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="To promote the upliftment, welfare, and sustainability of the environment and all living beings..."
+            android:textSize="16sp"
+            android:textColor="?attr/colorOnSurface"
+            android:layout_marginBottom="24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HealFoundation's Mission"
+            android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="?attr/colorOnSurface"
             android:layout_marginBottom="8dp" />
 
-        <!-- Contact Info -->
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/aboutContactInfo"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="For support, please email us at: healfoundationsa@gmail.com"
+            android:text="To provide sustainable activities in the pursuance of the core mandate of the HEAL Foundation..."
             android:textSize="16sp"
-            android:textColor="?attr/colorOnSurfaceVariant"
+            android:textColor="?attr/colorOnSurface"
             android:layout_marginBottom="24dp" />
 
-        <!-- Map View for Location -->
+        <!-- Map Section -->
         <WebView
             android:id="@+id/mapView"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="16dp"
+            android:textColor="?attr/colorOnSurface"
+            tools:ignore="WebViewLayout" />
 
-        <!-- Home Button -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/homeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Go to Home"
-
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:textColor="@color/black"
-            style="@style/Widget.Material3.Button.ElevatedButton" />
+            android:textColor="@color/black" />
     </LinearLayout>
 </ScrollView>

@@ -1,138 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/white"
+    tools:layout_editor_absoluteY="25dp">
 
-    <!-- Logo in the Top Left -->
-    <ImageView
-        android:id="@+id/logoImageView"
-        android:layout_width="60dp"
-        android:layout_height="53dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/heallogo" />
+    <!-- Logo Image on the top left -->
 
-    <!-- Login Button in the Top Right -->
+    <!-- Login Button on the top right -->
+
+    <!-- Navigation Bar with toggle buttons, positioned below the logo and login button -->
+
+    <!-- ViewPager below navigation bar -->
+
+    <!-- Donate Button at the bottom center -->
+
     <Button
         android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        style="@style/CustomButton"
+        android:layout_marginTop="60dp"
         android:text="Login"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Navigation Bar below Logo -->
     <LinearLayout
         android:id="@+id/navigationBar"
-        android:layout_width="match_parent"
+        android:layout_width="411dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/logoImageView"
-        android:layout_marginTop="1dp"
-        android:background="@color/cream"
+        android:background="@color/accentColor"
         android:orientation="horizontal"
-        android:padding="6dp">
+        android:padding="6dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp">
 
         <com.google.android.material.button.MaterialButtonToggleGroup
             android:id="@+id/toggleButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
+
             <Button
-                style="?attr/materialButtonOutlinedStyle"
                 android:id="@+id/eventsButton"
+                style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Events"
-                />
+                android:text="Events" />
+
             <Button
-                style="?attr/materialButtonOutlinedStyle"
                 android:id="@+id/settingsButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Settings"
-                />
-            <Button
                 style="?attr/materialButtonOutlinedStyle"
-                android:id="@+id/calendarButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Calendar"
-                />
+                android:text="Settings" />
+
+            <Button
+                android:id="@+id/calendarButton"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Calendar" />
 
             <Button
                 android:id="@+id/aboutButton"
                 style="?attr/materialButtonOutlinedStyle"
-                android:layout_width="100dp"
+                android:layout_width="98dp"
                 android:layout_height="wrap_content"
                 android:text="About" />
+
         </com.google.android.material.button.MaterialButtonToggleGroup>
-
-
     </LinearLayout>
 
-    <!-- ViewPager2 for scrolling images with descriptions -->
+    <!-- User Profile Icon on the top right, initially hidden -->
+
+    <!-- Profile TextView aligned below user icon, initially hidden -->
+
+    <!-- Logout Button below the profile text, initially hidden -->
+
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
-        android:layout_width="match_parent"
-        android:layout_height="520dp"
-        android:layout_below="@id/navigationBar"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp" />
+        android:layout_width="349dp"
+        android:layout_height="557dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="143dp"
+        android:layout_marginEnd="31dp"
+        android:layout_marginBottom="142dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- User Profile Icons -->
-    <ImageView
-        android:id="@+id/userImageView"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="3dp"
-        android:layout_marginEnd="26dp"
-        android:src="@drawable/placeholder"
-        android:visibility="gone" />
-
-    <TextView
-        android:id="@+id/profileTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="67dp"
-        android:layout_marginEnd="29dp"
-        android:text="My Profile"
-        android:visibility="gone" />
-
-    <!-- Logout Button -->
-    <Button
-        android:id="@+id/logoutButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="114dp"
-        android:background="@drawable/custom_button"
-        android:text="Logout"
-        android:visibility="gone" />
-
-    <!-- Donate Button at the bottom center -->
     <Button
         android:id="@+id/donateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="Donate"
-        android:backgroundTint="@color/blue"
         android:textColor="@android:color/white"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp" />
+        app:layout_constraintEnd_toEndOf="@+id/viewPager"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="@+id/viewPager"
+        app:layout_constraintTop_toBottomOf="@+id/viewPager" />
 
-</RelativeLayout>
+    <ImageView
+        android:id="@+id/userImageView"
+        android:layout_width="51dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="107dp"
+        android:src="@drawable/placeholder"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/profileTextView"
+        android:layout_width="87dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="104dp"
+        android:layout_marginEnd="76dp"
+        android:text="My Profile"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/logoutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="Logout"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
