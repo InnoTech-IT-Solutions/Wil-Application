@@ -7,6 +7,7 @@ import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
@@ -30,6 +31,7 @@ class CalendarActivity : BaseActivity() {
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var toggle: ActionBarDrawerToggle
     private val eventsList = ArrayList<String>()
+    private val eventDetailsMap = HashMap<String, String>() // Map to store descriptions
     private lateinit var eventsAdapter: ArrayAdapter<String>
     private val dateFormatter = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
 
@@ -58,6 +60,13 @@ class CalendarActivity : BaseActivity() {
         calendarView.setOnDateChangedListener { _, date, _ ->
             val selectedDate = dateFormatter.format(date.date)
             loadEventsForDate(selectedDate)
+        }
+
+        // Set up click listener for the ListView items
+        eventsListView.setOnItemClickListener { _, _, position, _ ->
+            val title = eventsList[position]
+            val description = eventDetailsMap[title] ?: "No description available"
+            showEventDescription(title, description)
         }
     }
 
@@ -138,6 +147,7 @@ class CalendarActivity : BaseActivity() {
     // Load events for the selected date
     private fun loadEventsForDate(date: String) {
         eventsList.clear()
+        eventDetailsMap.clear()
 
         database.child("events").child(date).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -145,8 +155,8 @@ class CalendarActivity : BaseActivity() {
                     for (eventSnapshot in snapshot.children) {
                         val title = eventSnapshot.child("title").getValue(String::class.java) ?: "Untitled"
                         val description = eventSnapshot.child("description").getValue(String::class.java) ?: "No description"
-                        val eventText = "$title - $description"
-                        eventsList.add(eventText)
+                        eventsList.add(title)
+                        eventDetailsMap[title] = description
                     }
                     eventsAdapter.notifyDataSetChanged()
                 } else {
@@ -161,6 +171,15 @@ class CalendarActivity : BaseActivity() {
                 Toast.makeText(this@CalendarActivity, "Error loading events", Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+    // Show the description in a dialog when a list item is clicked
+    private fun showEventDescription(title: String, description: String) {
+        AlertDialog.Builder(this)
+            .setTitle(title)
+            .setMessage(description)
+            .setPositiveButton("OK", null)
+            .show()
     }
 
     // Inner class to decorate event dates

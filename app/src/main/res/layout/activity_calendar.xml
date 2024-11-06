@@ -6,62 +6,86 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Main content using ConstraintLayout -->
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <!-- Scrollable Content -->
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-
-
-        <!-- App Name -->
-
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/aboutAppName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Heal Foundation"
-            android:textColor="?attr/colorOnSurface"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/aboutDescription"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/aboutDescription"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Click on the highlighted dates on the calendar to find out what events are featuring on those dates, as well as find out more details about them!"
-            android:textColor="?attr/colorOnSurface"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/materialCalendarView"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.831"
-            tools:layout_editor_absoluteX="0dp" />
+            android:layout_height="wrap_content">
 
-        <com.prolificinteractive.materialcalendarview.MaterialCalendarView
-            android:id="@+id/materialCalendarView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.784"
-            app:mcv_selectionColor="@color/green"
-            app:mcv_showOtherDates="all"
-            tools:layout_editor_absoluteX="0dp" />
+            <!-- App Logo -->
 
-        <ListView
-            android:id="@+id/eventsListView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/materialCalendarView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <!-- App Name -->
+
+            <ImageView
+                android:id="@+id/logoImageView"
+                android:layout_width="60dp"
+                android:layout_height="53dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/heallogo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- Description -->
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/aboutAppName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Heal Foundation"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/aboutDescription"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.327"
+                app:layout_constraintStart_toEndOf="@id/logoImageView"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.432" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/aboutDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Click on the highlighted dates on the calendar to find out what events are featuring on those dates. Click on the event displayed at the bottom for more details!"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="16sp"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                app:layout_constraintTop_toBottomOf="@id/logoImageView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- Calendar View -->
+            <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+                android:id="@+id/materialCalendarView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/aboutDescription"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:mcv_selectionColor="@color/green"
+                app:mcv_showOtherDates="all" />
+
+            <!-- ListView for Events -->
+            <ListView
+                android:id="@+id/eventsListView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/materialCalendarView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
     <!-- Navigation drawer menu -->
     <com.google.android.material.navigation.NavigationView
