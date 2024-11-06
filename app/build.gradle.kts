@@ -63,6 +63,9 @@ dependencies {
     implementation("com.google.firebase:firebase-database:21.0.0")
     implementation("com.google.firebase:firebase-firestore:25.1.1")
 
+    // Material Calendar
+    implementation ("com.prolificinteractive:material-calendarview:1.4.3")
+
     // Jetpack Compose and Material 3 dependencies
     implementation("androidx.compose.material3:material3:1.1.0")
     implementation("androidx.compose.ui:ui:1.5.0")
@@ -73,6 +76,7 @@ dependencies {
     // Additional Compose UI dependencies
     implementation("androidx.compose.foundation:foundation:1.7.5")
     debugImplementation("androidx.compose.ui:ui-tooling:1.7.5")
+
 
     // Preferences for Android
     implementation("androidx.preference:preference-ktx:1.2.1")

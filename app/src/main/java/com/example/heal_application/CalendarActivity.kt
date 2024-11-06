@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ArrayAdapter
-import android.widget.CalendarView
 import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -13,13 +12,19 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.prolificinteractive.materialcalendarview.CalendarDay
+import com.prolificinteractive.materialcalendarview.MaterialCalendarView
+import com.prolificinteractive.materialcalendarview.DayViewDecorator
+import com.prolificinteractive.materialcalendarview.DayViewFacade
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import java.text.SimpleDateFormat
-import java.util.Calendar
 import java.util.Locale
+import java.util.Calendar
 
 class CalendarActivity : BaseActivity() {
 
-    private lateinit var calendarView: CalendarView
+    private lateinit var calendarView: MaterialCalendarView
     private lateinit var eventsListView: ListView
     private lateinit var database: DatabaseReference
     private lateinit var drawerLayout: DrawerLayout
@@ -33,7 +38,7 @@ class CalendarActivity : BaseActivity() {
         layoutInflater.inflate(R.layout.activity_calendar, findViewById(R.id.content_frame))
 
         // Initialize views
-        calendarView = findViewById(R.id.calendarView)
+        calendarView = findViewById(R.id.materialCalendarView)
         eventsListView = findViewById(R.id.eventsListView)
 
         // Setup Firebase reference
@@ -46,12 +51,12 @@ class CalendarActivity : BaseActivity() {
         // Setup Toolbar and DrawerLayout
         setupDrawerLayout()
 
-        // Listen for date changes on the calendar
-        calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
-            // Format date as "dd-MM-yyyy"
-            val calendar = Calendar.getInstance()
-            calendar.set(year, month, dayOfMonth)
-            val selectedDate = dateFormatter.format(calendar.time)
+        // Load and highlight event dates
+        highlightEventDates()
+
+        // Set listener for date selection
+        calendarView.setOnDateChangedListener { _, date, _ ->
+            val selectedDate = dateFormatter.format(date.date)
             loadEventsForDate(selectedDate)
         }
     }
@@ -72,7 +77,7 @@ class CalendarActivity : BaseActivity() {
             R.string.navigation_drawer_open, R.string.navigation_drawer_close
         )
         drawerLayout.addDrawerListener(toggle)
-        toggle.syncState() // Ensure the hamburger icon is synced
+        toggle.syncState()
 
         // Navigation view setup
         val navigationView: NavigationView = findViewById(R.id.navigationView)
@@ -82,9 +87,7 @@ class CalendarActivity : BaseActivity() {
                     startActivity(Intent(this, HomeActivity::class.java))
                     true
                 }
-                R.id.nav_calendar -> {
-                    true
-                }
+                R.id.nav_calendar -> true
                 R.id.nav_settings -> {
                     startActivity(Intent(this, SettingsActivity::class.java))
                     true
@@ -100,7 +103,39 @@ class CalendarActivity : BaseActivity() {
         }
     }
 
-    // Load events for the selected date from Firebase
+    // Highlight dates that have events
+    private fun highlightEventDates() {
+        val eventDates = mutableListOf<CalendarDay>()
+
+        database.child("events").addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    for (dateSnapshot in snapshot.children) {
+                        val date = dateSnapshot.key ?: continue
+                        val parsedDate = dateFormatter.parse(date)
+                        parsedDate?.let {
+                            val calendar = Calendar.getInstance().apply { time = parsedDate }
+                            val calendarDay = CalendarDay.from(
+                                calendar.get(Calendar.YEAR),
+                                calendar.get(Calendar.MONTH),  // Keep zero-indexed
+                                calendar.get(Calendar.DAY_OF_MONTH)
+                            )
+                            eventDates.add(calendarDay)
+                        }
+                    }
+                    // Apply the decorator for event dates
+                    calendarView.addDecorator(EventDecorator(Color.BLUE, eventDates))
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("CalendarActivity", "Error loading event dates: ${error.message}")
+                Toast.makeText(this@CalendarActivity, "Error loading event dates", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+    // Load events for the selected date
     private fun loadEventsForDate(date: String) {
         eventsList.clear()
 
@@ -115,7 +150,7 @@ class CalendarActivity : BaseActivity() {
                     }
                     eventsAdapter.notifyDataSetChanged()
                 } else {
-                    // Show message if there are no events for the selected date
+                    // No events for the selected date
                     eventsList.add("No events on this date")
                     eventsAdapter.notifyDataSetChanged()
                 }
@@ -126,5 +161,19 @@ class CalendarActivity : BaseActivity() {
                 Toast.makeText(this@CalendarActivity, "Error loading events", Toast.LENGTH_SHORT).show()
             }
         })
+    }
+
+    // Inner class to decorate event dates
+    private inner class EventDecorator(color: Int, dates: Collection<CalendarDay>) : DayViewDecorator {
+        private val highlightDrawable = ColorDrawable(color)
+        private val datesSet: HashSet<CalendarDay> = HashSet(dates)
+
+        override fun shouldDecorate(day: CalendarDay): Boolean {
+            return datesSet.contains(day)
+        }
+
+        override fun decorate(view: DayViewFacade) {
+            view.setBackgroundDrawable(highlightDrawable)
+        }
     }
 }
