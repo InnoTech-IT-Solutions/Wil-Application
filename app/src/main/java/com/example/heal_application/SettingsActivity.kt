@@ -20,9 +20,8 @@ import com.google.firebase.auth.FirebaseUser
 class SettingsActivity : BaseActivity() {
 
     private lateinit var notificationsSwitch: SwitchMaterial
-    private lateinit var darkModeSwitch: SwitchMaterial
-    private lateinit var profileTextView: TextView
-    private lateinit var userImageView: ImageView
+
+
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,9 +31,8 @@ class SettingsActivity : BaseActivity() {
         auth = FirebaseAuth.getInstance()
         // Initialize views
         notificationsSwitch = findViewById(R.id.notificationsSwitch)
-        darkModeSwitch = findViewById(R.id.darkModeSwitch)
-        profileTextView = findViewById(R.id.profileTextView)
-        userImageView = findViewById(R.id.userImageView)
+
+
         val saveSettingsButton = findViewById<MaterialButton>(R.id.saveSettingsButton)
 
         // Firebase authentication instance
@@ -45,27 +43,7 @@ class SettingsActivity : BaseActivity() {
             return
         }
         val currentUser: FirebaseUser? = auth.currentUser
-        if (currentUser != null) {
 
-            profileTextView.visibility = View.VISIBLE
-            userImageView.setImageResource(R.drawable.placeholder)
-            userImageView.visibility = View.VISIBLE
-
-
-            profileTextView.text = "My Profile"
-        } else {
-
-            profileTextView.visibility = View.GONE
-            userImageView.visibility = View.GONE
-
-        }
-        profileTextView.setOnClickListener {
-            startActivity(Intent(this, ProfileActivity::class.java))
-        }
-
-        userImageView.setOnClickListener {
-            startActivity(Intent(this, ProfileActivity::class.java))
-        }
         // Save settings when the save button is clicked
         saveSettingsButton.setOnClickListener {
             saveUserSettings(user.email ?: "")  // Pass the user's email
@@ -93,10 +71,10 @@ class SettingsActivity : BaseActivity() {
 
         ref.get().addOnSuccessListener {
             val notificationsEnabled = it.child("notifications_enabled").getValue(Boolean::class.java) ?: false
-            val darkModeEnabled = it.child("dark_mode").getValue(Boolean::class.java) ?: false
+
 
             notificationsSwitch.isChecked = notificationsEnabled
-            darkModeSwitch.isChecked = darkModeEnabled
+
         }.addOnFailureListener {
             Toast.makeText(this, "Failed to load settings", Toast.LENGTH_SHORT).show()
         }
@@ -105,7 +83,7 @@ class SettingsActivity : BaseActivity() {
     private fun saveUserSettings(email: String) {
         val settings = mapOf(
             "notifications_enabled" to notificationsSwitch.isChecked,
-            "dark_mode" to darkModeSwitch.isChecked
+
         )
 
         val ref = FirebaseDatabase.getInstance().getReference("users").child(email.replace('.', '_'))
