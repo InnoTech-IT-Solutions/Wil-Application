@@ -80,6 +80,11 @@ open class BaseActivity : AppCompatActivity() {
                     finish()
                     true
                 }
+                R.id.nav_profile -> {
+                    startActivity(Intent(this, ProfileActivity::class.java))
+                    finish()
+                    true
+                }
                 else -> false
             }
         }

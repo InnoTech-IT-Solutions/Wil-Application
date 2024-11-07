@@ -5,13 +5,13 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
 
-class PrivacyPolicyActivity : AppCompatActivity() {
+class PrivacyPolicyActivity : BaseActivity() {
 
     private lateinit var homeButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_privacy_policy)
+        layoutInflater.inflate(R.layout.activity_privacy_policy, findViewById(R.id.content_frame))
 
         // Initialize the home button and set its click listener inside onCreate
         homeButton = findViewById(R.id.homeButton)

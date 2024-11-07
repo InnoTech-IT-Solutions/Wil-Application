@@ -25,6 +25,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var forgotPasswordButton: TextView
     private lateinit var signupButton: TextView
     private lateinit var database: DatabaseReference
+    private lateinit var homeBtn: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +40,7 @@ class LoginActivity : AppCompatActivity() {
         loginButton = findViewById(R.id.loginButton)
         forgotPasswordButton = findViewById(R.id.forgotPasswordButton)
         signupButton = findViewById(R.id.signupButton)
+        homeBtn = findViewById(R.id.homeBtn)
 
         //Highlighting "Sign up!"
         val fulltext = "Don't have an account? Sign Up!"
@@ -55,6 +57,9 @@ class LoginActivity : AppCompatActivity() {
             Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
         )
 
+        homeBtn.setOnClickListener {
+            startActivity(Intent(this, HomeActivity::class.java))
+        }
         // Setting spannable to signupButton TV
         signupButton.text = spannableString
 

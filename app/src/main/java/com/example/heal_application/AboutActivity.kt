@@ -10,11 +10,11 @@ import androidx.appcompat.app.AppCompatActivity
 private lateinit var homeButton: Button
 private lateinit var privacyPolicyButton: Button
 
-class AboutActivity : AppCompatActivity() {
+class AboutActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_about)
+        layoutInflater.inflate(R.layout.activity_about, findViewById(R.id.content_frame))
 
         val webView: WebView = findViewById(R.id.mapView)
         homeButton = findViewById(R.id.homeButton)

@@ -17,7 +17,7 @@ import android.widget.TextView
 
 import com.google.firebase.auth.FirebaseUser
 
-class SettingsActivity : AppCompatActivity() {
+class SettingsActivity : BaseActivity() {
 
     private lateinit var notificationsSwitch: SwitchMaterial
     private lateinit var darkModeSwitch: SwitchMaterial
@@ -27,7 +27,8 @@ class SettingsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_settings)
+        layoutInflater.inflate(R.layout.activity_settings, findViewById(R.id.content_frame))
+
         auth = FirebaseAuth.getInstance()
         // Initialize views
         notificationsSwitch = findViewById(R.id.notificationsSwitch)
