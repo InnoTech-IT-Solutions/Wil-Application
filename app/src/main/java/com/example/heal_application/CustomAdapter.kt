@@ -6,26 +6,27 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class CustomAdapter(private val dataSet: Array<String>) :
+class CustomAdapter(private val dataSet: List<Event>) :
     RecyclerView.Adapter<CustomAdapter.ViewHolder>() {
 
-    // ViewHolder class to hold references to the item views
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val textView: TextView = view.findViewById(R.id.textView)
+        val dateTextView: TextView = view.findViewById(R.id.dateTextView)
+        val titleTextView: TextView = view.findViewById(R.id.titleTextView)
+        val descriptionTextView: TextView = view.findViewById(R.id.descriptionTextView)
     }
 
-    // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.text_row_item, parent, false)
+            .inflate(R.layout.event_row_item, parent, false)
         return ViewHolder(view)
     }
 
-    // Bind data to the views (invoked by the layout manager)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.textView.text = dataSet[position] // Display the event text
+        val event = dataSet[position]
+        holder.dateTextView.text = event.date
+        holder.titleTextView.text = event.title
+        holder.descriptionTextView.text = event.description
     }
 
-    // Return the size of the dataset
     override fun getItemCount() = dataSet.size
 }

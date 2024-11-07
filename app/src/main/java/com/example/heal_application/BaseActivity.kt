@@ -85,6 +85,12 @@ open class BaseActivity : AppCompatActivity() {
                     finish()
                     true
                 }
+                R.id.nav_about -> {
+                    startActivity(Intent(this, AboutActivity::class.java))
+                    finish()
+                    true
+                }
+
                 else -> false
             }
         }

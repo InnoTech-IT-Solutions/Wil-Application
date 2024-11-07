@@ -13,29 +13,22 @@
         android:layout_height="match_parent">
 
         <!-- Home Button in the Top Left -->
+
+        <!-- Button to Open Navigation Drawer -->
+
+        <!-- Calendar Button -->
+
         <Button
             android:id="@+id/homeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="Home"
-            android:textColor="@android:color/white" />
-
-        <!-- Button to Open Navigation Drawer -->
-
-        <!-- Calendar Button -->
-        <Button
-            android:id="@+id/openDrawerButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="14dp"
-            android:text="Menu"
+            android:layout_marginStart="163dp"
+            android:layout_marginTop="27dp"
+            android:layout_marginEnd="160dp"
+            android:text="Home"
             android:textColor="@android:color/white" />
 
         <Button
