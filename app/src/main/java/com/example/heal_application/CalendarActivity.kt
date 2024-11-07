@@ -139,7 +139,7 @@ class CalendarActivity : BaseActivity() {
 
             override fun onCancelled(error: DatabaseError) {
                 Log.e("CalendarActivity", "Error loading event dates: ${error.message}")
-                Toast.makeText(this@CalendarActivity, "Error loading event dates", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@CalendarActivity, "Error loading event dates, Please Log in to view events", Toast.LENGTH_SHORT).show()
             }
         })
     }
@@ -168,7 +168,7 @@ class CalendarActivity : BaseActivity() {
 
             override fun onCancelled(error: DatabaseError) {
                 Log.e("CalendarActivity", "Error loading events: ${error.message}")
-                Toast.makeText(this@CalendarActivity, "Error loading events", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@CalendarActivity, "Error loading events, Please Log in to view events", Toast.LENGTH_SHORT).show()
             }
         })
     }
