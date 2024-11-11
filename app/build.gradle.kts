@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.heal_application"
+    namespace = "com.innotech.healapplication"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.heal_application"
+        applicationId = "com.innotech.healapplication"
         minSdk = 26
         targetSdk = 34
         versionCode = 1

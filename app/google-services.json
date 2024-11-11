@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "747981134491",
+    "firebase_url": "https://wil-application-default-rtdb.firebaseio.com",
     "project_id": "wil-application",
     "storage_bucket": "wil-application.appspot.com"
   },
@@ -10,6 +11,25 @@
         "mobilesdk_app_id": "1:747981134491:android:e5a245a5bd9600c17e043e",
         "android_client_info": {
           "package_name": "com.example.heal_application"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAND-TQE_XkZFkCyVpXOEu7sI43uarD8WY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:747981134491:android:613b3d74d17be49d7e043e",
+        "android_client_info": {
+          "package_name": "com.innotech.healapplication"
         }
       },
       "oauth_client": [],
